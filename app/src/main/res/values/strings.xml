@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MVVMAndLiveData</string>
+
+    <!--api URL's-->
+    <string name="base_url" translatable="false">http://quotable.io</string>
+    <string name="url_end_point" translatable="false">quotes</string>
+</resources>
