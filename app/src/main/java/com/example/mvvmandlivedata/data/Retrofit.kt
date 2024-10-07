@@ -1,5 +1,6 @@
 package com.example.mvvmandlivedata.data
 
+import com.example.mvvmandlivedata.R
 import com.example.mvvmandlivedata.helpers.ApiService
 import com.example.mvvmandlivedata.helpers.Constants
 import com.example.mvvmandlivedata.models.QuoteList
@@ -7,11 +8,14 @@ import com.google.gson.GsonBuilder
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import okhttp3.Callback
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.Objects
 
 object Retrofit {
 
@@ -31,7 +35,7 @@ object Retrofit {
 
     private fun getRetorfitInstance() : Retrofit {
         return Retrofit.Builder()
-            .baseUrl(Constants.BASE_URL)
+            .baseUrl("https://favqs.com/api/")
             .addConverterFactory(GsonConverterFactory.create())
             .client(getInterceptor())
             .build()
@@ -42,9 +46,12 @@ object Retrofit {
     }
 
     fun executeApi() {
-        var reCallObj: Call<QuoteList>?
         CoroutineScope(Dispatchers.IO).launch {
-            reCallObj = getQuotes().getQuoteList(1)
+            getQuotes().getQuoteList().execute()
         }
+    }
+
+    private fun getString(value : Int) : String {
+        return getString(value)
     }
 }

@@ -8,8 +8,8 @@ import retrofit2.http.Query
 
 interface ApiService {
 
-    @GET(Constants.END_POINT)
+    @GET("qotd")
     fun getQuoteList(
-        @Query("page") page : Int
+        /*@Query("page") page : Int*/
     ) : Call<QuoteList>
 }
