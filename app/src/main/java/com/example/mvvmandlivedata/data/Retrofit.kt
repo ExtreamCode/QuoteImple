@@ -3,13 +3,14 @@ package com.example.mvvmandlivedata.data
 import com.example.mvvmandlivedata.R
 import com.example.mvvmandlivedata.helpers.ApiService
 import com.example.mvvmandlivedata.helpers.Constants
-import com.example.mvvmandlivedata.models.QuoteList
+import com.example.mvvmandlivedata.models.Quote
 import com.google.gson.GsonBuilder
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import okhttp3.Callback
 import okhttp3.OkHttpClient
+import okhttp3.ResponseBody
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
 import retrofit2.Response
@@ -47,10 +48,9 @@ object Retrofit {
 
     fun executeApi() {
         CoroutineScope(Dispatchers.IO).launch {
-            getQuotes().getQuoteList().execute()
+            getQuotes()?.getQuoteList()?.execute()
         }
-    }
-
+        }
     private fun getString(value : Int) : String {
         return getString(value)
     }
