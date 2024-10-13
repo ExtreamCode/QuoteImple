@@ -10,9 +10,8 @@ class QuoteRepository(private val data: Retrofit) {
 
     private val quotes = MutableLiveData<Quote>()
 
-    val quotesObj = LiveData<Quote>()
-        get() = quotes
+    val quotesObj: LiveData<Quote> get() = quotes
     fun getQuotes() {
-        quotes.postValue(data.executeApi())
+        quotes.postValue()
     }
 }

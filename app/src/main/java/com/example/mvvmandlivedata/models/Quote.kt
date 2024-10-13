@@ -12,4 +12,4 @@ data class Quote(
     val tags: List<String>,
     val upvotes_count: Int,
     val url: String
-)
+){}
