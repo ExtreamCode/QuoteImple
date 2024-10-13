@@ -6,12 +6,13 @@ import com.example.mvvmandlivedata.data.Retrofit
 import com.example.mvvmandlivedata.models.Quote
 import com.example.mvvmandlivedata.models.Quotes
 
-class QuoteRepository(private val data: Retrofit) {
+class QuoteRepository() {
 
     private val quotes = MutableLiveData<Quote>()
 
     val quotesObj: LiveData<Quote> get() = quotes
+
     fun getQuotes() {
-        quotes.postValue()
+        quotes.postValue(Retrofit.executeApi())
     }
 }

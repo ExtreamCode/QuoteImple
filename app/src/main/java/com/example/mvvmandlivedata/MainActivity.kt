@@ -6,6 +6,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.mvvmandlivedata.Repository.QuoteRepository
 import com.example.mvvmandlivedata.data.Retrofit
 
 class MainActivity : AppCompatActivity() {
@@ -13,6 +14,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
-        Retrofit.executeApi()
+        /*Retrofit.executeApi()*/
+        val repo = QuoteRepository()
+        repo.getQuotes()
     }
 }

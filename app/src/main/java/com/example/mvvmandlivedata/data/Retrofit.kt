@@ -46,19 +46,21 @@ object Retrofit {
         return  getRetorfitInstance().create(ApiService::class.java)
     }
 
-    fun executeApi(){
+    fun executeApi() : Quote? {
+        var resp : Quote? = null
         CoroutineScope(Dispatchers.IO).launch {
-            getQuotes().getQuoteList().execute().castToSpecificFormat()
+            resp = getQuotes().getQuoteList().execute().body()
             }
+        return resp
         }
 
-    private fun Response<Quote>.castToSpecificFormat(): Quote? {
+    /*private fun Response<Quote>.castToSpecificFormat(): Quote? {
         return if (this.isSuccessful) {
             this.body() // Body might already be an object of type Quote
         } else {
             null
         }
-    }
+    }*/
     private fun getString(value : Int) : String {
         return getString(value)
     }
